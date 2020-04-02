@@ -56,7 +56,7 @@ export function _getChallengeStatus(data) {
     return http.post("/api/challenge/getStatus", data)
 }
 //停止指定的实验
-export function _stopChallenge(data){
+export function _stopChallenge(data) {
     return http.post("/api/challenge/stop", data)
 }
 
@@ -75,6 +75,11 @@ export function _editChallenge(data) {
     return http.post("/api/challenge/edit", data)
 }
 
+
+// 删除指定实验信息
+export function _delChallenge(data) {
+    return http.post("/api/challenge/del", data)
+}
 export function _getData2(data) {
     return http.post("/api/access/addData", data)
 }

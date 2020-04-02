@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Table, Button } from 'antd';
+import { Table, Button, Popconfirm, message } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { _getChallenge } from "../../server"
+import { _getChallenge, _delChallenge } from "../../core/server"
 
 
 class Challenge_Manage extends React.Component {
@@ -29,6 +29,11 @@ class Challenge_Manage extends React.Component {
                     key: 'Description',
                 },
                 {
+                    title: '镜像',
+                    dataIndex: 'Image',
+                    key: 'Image',
+                },
+                {
                     title: '类别',
                     dataIndex: 'Type',
                     key: 'Type',
@@ -39,8 +44,16 @@ class Challenge_Manage extends React.Component {
                     render: (text, record) => (
                         <span>
                             <Link to={{ pathname: '/Challenge_Edit', state: { Id: record.key } }}><span style={{ marginRight: 16 }}>编辑</span></Link>
-                            <a style={{ marginRight: 16 }}>分享</a>
-                            <a>删除</a>
+                            {/* <a style={{ marginRight: 16 }}>分享</a> */}
+                            <Popconfirm
+                                title="该操作不可恢复,请确定是否删除?"
+                                onConfirm={this.delChallenge.bind(this,{ Id: record.key })}
+                                // onCancel={cancel}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <a href="#">删除</a>
+                            </Popconfirm>
                         </span>
                     ),
                 }
@@ -55,9 +68,9 @@ class Challenge_Manage extends React.Component {
         const res = await _getChallenge()
         console.log(res)
         if (res.status === 200) {
-            var tmpdata =  {}
+            var tmpdata = {}
             tmpdata = res.data.data
-            for(var i=0;i< res.data.length;i++){
+            for (var i = 0; i < res.data.length; i++) {
                 console.log(tmpdata[i])
                 tmpdata[i]['key'] = tmpdata[i]['Key']
             }
@@ -67,9 +80,27 @@ class Challenge_Manage extends React.Component {
         }
     }
 
+    async delChallenge(item) {
+        const res = await _delChallenge(item)
+        console.log(res)
+        if (res.status === 200) {
+            if (res.data.code === 200) {
+                message.success("删除成功")
+                this.getChallenge()
+            } else {
+                message.error("删除失败")
+            }
+
+        }
+    }
+
+
     componentDidMount() {
         this.getChallenge()
     }
+
+
+
     render() {
         return (
             <div>

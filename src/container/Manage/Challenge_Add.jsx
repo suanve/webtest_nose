@@ -1,13 +1,15 @@
 import React from 'react';
-import { Form, Input, InputNumber, Button, message } from 'antd';
+import { Form, Input, Select, Button, message, InputNumber } from 'antd';
 import { Row, Col } from 'antd';
 
-import { _addChallenge } from "../../server"
+import { _addChallenge } from "../../core/server"
 
 const layout = {
     labelCol: { span: 4 },
     wrapperCol: { span: 16 },
 };
+
+const { Option } = Select;
 
 const validateMessages = {
     required: '请输入内容',
@@ -30,7 +32,8 @@ class Challenge_Add extends React.Component {
     }
 
     async addData(values) {
-        const res = await _addChallenge(values)
+        console.log(values)
+        const res = await _addChallenge(values.form)
         console.log(res)
         if (res.data.code === 200) {
             message.success('提交成功');
@@ -66,13 +69,21 @@ class Challenge_Add extends React.Component {
                             <Form.Item name={['form', 'Description']} label="备注">
                                 <Input.TextArea />
                             </Form.Item>
-                            <Form.Item name={['form', 'Type']} label="类别">
-                                <Input.TextArea />
+                            <Form.Item name={['form', 'Type']} label="类别" rules={[{ required: true }]}>
+                                <Select style={{ width: 120 }}>
+                                    <Option value={1}>SQL注入</Option>
+                                    <Option value={2}>XSS</Option>
+                                    <Option value={3}>命令执行</Option>
+                                </Select>
                             </Form.Item>
+                            <Form.Item name={['form', 'InPort']} label="内端口" >
+                                <InputNumber min={1} max={65535} defaultValue={80} />
+                            </Form.Item>
+
                             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                                 <Button type="primary" htmlType="submit">
-                                    提交
-                    </Button>
+                                    添加
+                                </Button>
                             </Form.Item>
                         </Form>
                     </Col>

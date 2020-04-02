@@ -3,10 +3,10 @@ import { Card, Tabs, Modal, Button, message, notification, Row, Col } from 'antd
 
 import { BrowserRouter as Redirect } from "react-router-dom";
 
-import { _getChallenge } from "../server"
-import { _startChallenge } from "../server"
-import { _getChallengeStatus } from "../server"
-import { _stopChallenge } from "../server"
+import { _getChallenge } from "../core/server"
+import { _startChallenge } from "../core/server"
+import { _getChallengeStatus } from "../core/server"
+import { _stopChallenge } from "../core/server"
 
 
 const { TabPane } = Tabs;

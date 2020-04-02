@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, message ,Select} from 'antd';
 import { Row, Col } from 'antd';
-import { _getData2, _editData } from "../server"
+import { _getData2, _editData } from "../core/server"
 
 const layout = {
     labelCol: { span: 4 },

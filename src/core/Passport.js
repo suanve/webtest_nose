@@ -1,9 +1,8 @@
 
 import { message } from 'antd';
 
-import { _login } from '../server';
+import { _login } from './server';
 
-import {getCookie,setCookie} from "./Cookie"
 
 export default class Passport {
     constructor() {

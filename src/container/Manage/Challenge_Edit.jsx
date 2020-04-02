@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Input, Button, message, Select } from 'antd';
+import { Form, Input, Button, message, Select, InputNumber } from 'antd';
 import { Row, Col } from 'antd';
-import { _getChallenge2, _editChallenge } from "../../server"
+import { _getChallenge2, _editChallenge } from "../../core/server"
 
 const layout = {
     labelCol: { span: 4 },
@@ -86,7 +86,8 @@ class Challenge_Edit extends React.Component {
             Img: this.state.data.Img,
             Image: this.state.data.Image,
             Description: this.state.data.Description,
-            Type: this.state.data.Type
+            Type: this.state.data.Type,
+            Inport: this.state.data.Inport
         });
     };
 
@@ -113,10 +114,6 @@ class Challenge_Edit extends React.Component {
                             >
                                 <Input />
                             </Form.Item>
-
-
-
-
 
                             <Form.Item
                                 name="Image"
@@ -150,6 +147,18 @@ class Challenge_Edit extends React.Component {
                                 <Input.TextArea />
                             </Form.Item>
 
+
+                            <Form.Item name={'Type'} label="类别" rules={[{ required: true }]}>
+                                <Select style={{ width: 120 }}>
+                                    <Option value={1}>SQL注入</Option>
+                                    <Option value={2}>XSS</Option>
+                                    <Option value={3}>命令执行</Option>
+                                </Select>
+                            </Form.Item>
+
+                            <Form.Item name={'Inport'} label="内端口" >
+                                <InputNumber min={1} max={65535} />
+                            </Form.Item>
 
                             <Form.Item
                                 name="Id"

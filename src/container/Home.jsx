@@ -3,7 +3,7 @@ import React from 'react';
 import { Table, Button } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { _getChallenge } from "../server"
+import { _getChallenge } from "../core/server"
 
 class Home extends React.Component {
     constructor(props) {
