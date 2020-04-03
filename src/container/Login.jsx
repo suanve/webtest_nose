@@ -20,6 +20,18 @@ class Login extends React.Component {
         this.setState(obj);
     }
 
+    onKeyup = (e) => {
+        if (e.keyCode === 13) {
+            this.AutoLogin()
+        }
+    }
+    AutoLogin = () => {
+        let p = this.props.passport == null ? new Passport() : this.props.passport;
+        p.login(this.state.username, this.state.password, () => {
+            // 登录成功时，跳转页面
+            this.props.history.push('/Challenge');
+        });
+    }
     render() {
         return (
             <div>
@@ -34,18 +46,12 @@ class Login extends React.Component {
                             }} /></span>
                         </div>
                         <div>
-                            <span><Input.Password style={{ marginTop: 20 }} addonBefore="密码" placeholder="input password" onInput={(event) => {
+                            <span><Input.Password style={{ marginTop: 20 }} addonBefore="密码" placeholder="input password" onKeyUp={this.onKeyup} onInput={(event) => {
                                 this.setUserInfo(event, 'password');
                             }} /></span>
                         </div>
                         <div>
-                            <Button style={{ marginTop: 20 }} type="primary" onClick={() => {
-                                let p = this.props.passport == null ? new Passport() : this.props.passport;
-                                p.login(this.state.username, this.state.password, () => {
-                                    // 登录成功时，跳转页面
-                                    this.props.history.push('/Challenge');
-                                });
-                            }}>登录</Button>
+                            <Button style={{ marginTop: 20 }} type="primary" onClick={this.AutoLogin}>登录</Button>
                         </div>
 
                     </Col>

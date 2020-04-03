@@ -150,9 +150,10 @@ class Challenge_Edit extends React.Component {
 
                             <Form.Item name={'Type'} label="类别" rules={[{ required: true }]}>
                                 <Select style={{ width: 120 }}>
-                                    <Option value={1}>SQL注入</Option>
-                                    <Option value={2}>XSS</Option>
-                                    <Option value={3}>命令执行</Option>
+                                    <Option value={1}>初级</Option>
+                                    <Option value={2}>中级</Option>
+                                    <Option value={3}>高级</Option>
+                                    <Option value={4}>其他</Option>
                                 </Select>
                             </Form.Item>
 

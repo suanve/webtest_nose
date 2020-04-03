@@ -173,6 +173,7 @@ class Challenge extends React.Component {
     };
 
     stop(itemId) {
+        message.info("开始停止实验,请等待")
         this.stopChallenge(itemId)
     };
 
@@ -230,7 +231,7 @@ class Challenge extends React.Component {
 
                     </Modal>
                     <Tabs defaultActiveKey="1" onChange={this.callback}>
-                        <TabPane tab="SQL注入" key="1">
+                        <TabPane tab="初级" key="1">
                             {this.state.Challenges === undefined ? this.state.Challenges = [] : ""}
                             {// 这里会循环把数据拿出
 
@@ -241,7 +242,7 @@ class Challenge extends React.Component {
                                 })
                             }
                         </TabPane>
-                        <TabPane tab="XSS" key="2">
+                        <TabPane tab="中级" key="2">
                             {// 这里会循环把数据拿出
                                 this.state.Challenges.map((item) => {
                                     if (item.Type === 2) {
@@ -250,10 +251,19 @@ class Challenge extends React.Component {
                                 })
                             }
                         </TabPane>
-                        <TabPane tab="命令执行" key="3">
+                        <TabPane tab="高级" key="3">
                             {// 这里会循环把数据拿出
                                 this.state.Challenges.map((item) => {
                                     if (item.Type === 3) {
+                                        return this.dataRander(item)
+                                    }
+                                })
+                            }
+                        </TabPane>
+                        <TabPane tab="其他" key="4">
+                            {// 这里会循环把数据拿出
+                                this.state.Challenges.map((item) => {
+                                    if (item.Type === 4) {
                                         return this.dataRander(item)
                                     }
                                 })

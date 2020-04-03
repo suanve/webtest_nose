@@ -3,6 +3,8 @@ import React from 'react';
 
 import 'antd/dist/antd.css';
 import '../static/css/index.css';
+import logo from "../static/images/logo.png"
+
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 
@@ -47,7 +49,7 @@ const Menubar = withRouter(({ history }) => {
             style={{ lineHeight: '64px' }}
         >
             <Menu.Item key="/Challenge"><Link to="/Challenge">实验</Link></Menu.Item>
-            <Menu.Item key="/Topics"><Link to="/Topics">知识库</Link></Menu.Item>
+            {/* <Menu.Item key="/Topics"><Link to="/Topics">知识库</Link></Menu.Item> */}
             <Menu.Item key="/About"><Link to="/About">关于</Link></Menu.Item>
 
             {passport.isAdmin ?
@@ -84,7 +86,7 @@ class Test extends React.Component {
             <Layout>
                 <Router>
                     <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-                        <div className="logo" />
+                        <div className="logo" ><img  style={{ position: 'fixed',margin:"0px 35px 0 "}} src={require('../static/images/logo.png')} /></div>
                         <Menubar />
                     </Header>
                     <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>

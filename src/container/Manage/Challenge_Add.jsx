@@ -71,9 +71,10 @@ class Challenge_Add extends React.Component {
                             </Form.Item>
                             <Form.Item name={['form', 'Type']} label="类别" rules={[{ required: true }]}>
                                 <Select style={{ width: 120 }}>
-                                    <Option value={1}>SQL注入</Option>
-                                    <Option value={2}>XSS</Option>
-                                    <Option value={3}>命令执行</Option>
+                                    <Option value={1}>初级</Option>
+                                    <Option value={2}>中级</Option>
+                                    <Option value={3}>高级</Option>
+                                    <Option value={4}>其他</Option>
                                 </Select>
                             </Form.Item>
                             <Form.Item name={['form', 'InPort']} label="内端口" >
