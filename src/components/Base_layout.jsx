@@ -22,7 +22,10 @@ import Challenge_Add from "../container/Manage/Challenge_Add"
 import Challenge_Edit from "../container/Manage/Challenge_Edit"
 
 import Container_Manage from "../container/Manage/Container_Manage"
+
 import Users_Manage from "../container/Manage/Users_Manage"
+import Users_Add from "../container/Manage/Users_Add"
+import Users_Edit from "../container/Manage/Users_Edit"
 
 
 import Passport from '../core/Passport';
@@ -128,7 +131,10 @@ class Test extends React.Component {
                             <Route path="/Challenge_Edit" component={Challenge_Edit} />
 
                             <Route path="/Mange_Container" component={Container_Manage} />
+
                             <Route path="/Mange_Users" component={Users_Manage} />
+                            <Route path="/Users_Add" component={Users_Add} />
+                            <Route path="/Users_Edit" component={Users_Edit} />
 
 
                         </div>

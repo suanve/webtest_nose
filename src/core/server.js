@@ -90,14 +90,36 @@ export function _stopContainer(data) {
     return http.post("/api/container/stop", data)
 }
 
+// 获取所有用户
+export function _getUsers() {
+    return http.get("/api/user/get")
+}
+// 添加用户
+export function _addUser(data) {
+    return http.post("/api/user/add", data)
+}
+// 删除用户
+export function _delUser(data) {
+    return http.post("/api/user/del", data)
+}
+
+// 获取指定用户信息
+export function _getUser2(data) {
+    return http.post("/api/user/get", data)
+}
+
+// 修改指定用户信息
+export function _editUser(data) {
+    return http.post("/api/user/edit", data)
+}
+export function _addData(data) {
+    return http.post("/api/access/addData", data)
+}
 
 export function _getData2(data) {
     return http.post("/api/access/addData", data)
 }
 
-export function _addData(data) {
-    return http.post("/api/access/addData", data)
-}
 
 export function _editData(data) {
     return http.post("/api/access/editData", data)

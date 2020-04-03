@@ -106,30 +106,21 @@ class Challenge extends React.Component {
         const res = await _getChallengeStatus()
         if (res.status === 200) {
             if (res.data.length != 0) {
-                for (var i = 0; i < res.data.data.length; i++) {
-                    // console.log(res.data.data[i]['url'])
-                    //动态更新list
-                    var tmpChallenges = this.state.Challenges
-
-                    // console.log(tmpChallenges)
-                    // console.log(res.data.data[i]['Id'])
-                    // tmpChallenges[i]['Description'] = res.data.data[i]['Url']
-                    var tmpId = getIndex(tmpChallenges,"Id",res.data.data[i]['Id'])
-
-                    tmpChallenges[tmpId]['Description'] = res.data.data[i]['Url']
-
-                    this.setState({
-                        Challenges: tmpChallenges
-                    })
-                }
-            } else if (res.data.length == 0) {
-                var tmpChallenges = this.state.Challenges
-                for (var i = 0; i < tmpChallenges.length; i++) {
-                    tmpChallenges[i]['Description'] = "nothging"
-                }
                 this.setState({
-                    Challenges: tmpChallenges
+                    Challenges:res.data.data
                 })
+                // for (var i = 0; i < res.data.data.length; i++) {
+
+                //     var tmpChallenges = this.state.Challenges
+                //     console.log(res.data.data)
+                //     console.log(tmpChallenges)
+
+                //     tmpChallenges[res.data.data[i]['Id']]['Description'] = res.data.data[i]['Url']
+
+                //     this.setState({
+                //         Challenges: tmpChallenges
+                //     })
+                // }
             }
         }
     }
@@ -208,7 +199,7 @@ class Challenge extends React.Component {
                     <center>
                         <Meta
                             title={<a style={{ color: 'black' }} onClick={this.ChallengeStatusChange} >题目:{item.Name}</a>}
-                            description={<div>地址: <a>{item.Description}</a></div>}
+                            description={<div>地址: <a href={item.Description} target="_Blank">{item.Description}</a></div>}
                         />
                     </center>
                 </Card>

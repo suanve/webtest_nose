@@ -11,7 +11,7 @@ class Container_Manage extends React.Component {
         this.state = {
             columns: [
                 {
-                    title: '编号',
+                    title: 'Id',
                     dataIndex: 'Key',
                     key: 'Key',
                     render: text => <a>{text}</a>,
@@ -44,7 +44,7 @@ class Container_Manage extends React.Component {
                         <span>
                             {/* <a style={{ marginRight: 16 }}>分享</a> */}
                             <Popconfirm
-                                title="该操作不可恢复,请确定是否删除?"
+                                title="该操作不可恢复,请确定是否停止?"
                                 onConfirm={this.stopContainer.bind(this, { Id: record.key, Username: record.Username })}
                                 // onCancel={cancel}
                                 okText="Yes"
