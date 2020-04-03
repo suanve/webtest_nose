@@ -46,7 +46,7 @@ class Challenge_Manage extends React.Component {
                             <Link to={{ pathname: '/Challenge_Edit', state: { Id: record.key } }}><span style={{ marginRight: 16 }}>编辑</span></Link>
                             {/* <a style={{ marginRight: 16 }}>分享</a> */}
                             <Popconfirm
-                                title="该操作不可恢复,请确定是否删除?"
+                                title="该操作不可恢复,请确定是否关闭?"
                                 onConfirm={this.delChallenge.bind(this,{ Id: record.key })}
                                 // onCancel={cancel}
                                 okText="Yes"
@@ -77,6 +77,8 @@ class Challenge_Manage extends React.Component {
             this.setState({
                 data: tmpdata
             })
+        }else if(res.status === -1){
+            message.error("token错误")
         }
     }
 
@@ -91,6 +93,8 @@ class Challenge_Manage extends React.Component {
                 message.error("删除失败")
             }
 
+        }else if(res.status === -1){
+            message.error("token错误")
         }
     }
 

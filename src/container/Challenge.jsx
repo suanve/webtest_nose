@@ -96,6 +96,13 @@ class Challenge extends React.Component {
 
     //获取实验状态
     async getChallengeStatus() {
+        function getIndex(list,key,value){
+            for(var i=0;i<list.length;i++){
+                if (list[i][key] == value){
+                    return i
+                }
+            }
+        }
         const res = await _getChallengeStatus()
         if (res.status === 200) {
             if (res.data.length != 0) {
@@ -103,7 +110,14 @@ class Challenge extends React.Component {
                     // console.log(res.data.data[i]['url'])
                     //动态更新list
                     var tmpChallenges = this.state.Challenges
-                    tmpChallenges[res.data.data[i]['Id'] - 1]['Description'] = res.data.data[i]['Url']
+
+                    // console.log(tmpChallenges)
+                    // console.log(res.data.data[i]['Id'])
+                    // tmpChallenges[i]['Description'] = res.data.data[i]['Url']
+                    var tmpId = getIndex(tmpChallenges,"Id",res.data.data[i]['Id'])
+
+                    tmpChallenges[tmpId]['Description'] = res.data.data[i]['Url']
+
                     this.setState({
                         Challenges: tmpChallenges
                     })
