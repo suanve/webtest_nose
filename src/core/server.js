@@ -5,7 +5,10 @@ var baseAPI = "http://192.168.104.233:8080"
 
 let http = {
     post: "",
-    get: ""
+    get: "",
+    delete: "",
+    put: "",
+    update: ""
 }
 
 http.post = function (api, data) {
@@ -32,6 +35,8 @@ http.get = function (api, data) {
             })
     })
 }
+
+
 
 
 export default http

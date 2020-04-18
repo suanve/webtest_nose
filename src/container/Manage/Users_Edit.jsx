@@ -93,7 +93,7 @@ class Users_Edit extends React.Component {
             <div>
                 <Row>
                     <Col span={8}>
-                        <Button onClick={this.test}>测试</Button>
+                        {/* <Button onClick={this.test}>测试</Button> */}
                     </Col>
 
                     <Col span={8}>
@@ -153,7 +153,7 @@ class Users_Edit extends React.Component {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col span={8}>col-8</Col>
+                    <Col span={8}> </Col>
                 </Row>
 
 

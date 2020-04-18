@@ -160,7 +160,7 @@ class Edit extends React.Component {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col span={8}>col-8</Col>
+                    <Col span={8}> </Col>
                 </Row>
 
 

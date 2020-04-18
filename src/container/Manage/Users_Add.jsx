@@ -53,7 +53,7 @@ class User_Add extends React.Component {
         return (
             <div>
                 <Row>
-                    <Col span={8}>col-8</Col>
+                    <Col span={8}> </Col>
                     <Col span={8}>
                         <span>添加新的用户</span>
                         <Form {...layout} name="nest-messages" onFinish={this.onFinish} validateMessages={validateMessages} >
@@ -78,7 +78,7 @@ class User_Add extends React.Component {
                             </Form.Item>
                         </Form>
                     </Col>
-                    <Col span={8}>col-8</Col>
+                    <Col span={8}> </Col>
                 </Row>
 
 
