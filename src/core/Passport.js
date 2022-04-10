@@ -1,7 +1,7 @@
 
 import { message } from 'antd';
 
-import { _login } from './server';
+import { _login, _register } from './server';
 
 
 export default class Passport {
@@ -48,6 +48,26 @@ export default class Passport {
         if (this.loginControl({ "username": username, "password": password },callback)) {
             
         }
+    }
 
+    async registerControl(data,callback) {
+        const res = await _register(data)
+        if (res.data.code === 200) {
+            var msg  = "注册成功"
+            message.success(msg);
+            // this.isLogin = true;
+            callback()
+        } else {
+            message.error('注册失败 具体问题请联系管理员');
+            this.isLogin = false;
+            localStorage.clear()
+        }
+
+    }
+
+    register(username, password, callback) {
+        if (this.registerControl({ "username": username, "password": password },callback)) {
+            
+        }
     }
 }

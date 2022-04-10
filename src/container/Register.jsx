@@ -3,12 +3,13 @@ import { Input, Tabs, Modal, Button, message, notification, Pagination, Row, Col
 
 import Passport from '../core/Passport';
 
-class Login extends React.Component {
+class Register extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            check_password:''
         };
     }
     setUserInfo(event, key) {
@@ -22,14 +23,23 @@ class Login extends React.Component {
 
     onKeyup = (e) => {
         if (e.keyCode === 13) {
-            this.AutoLogin()
+            this.AutoRegister()
         }
     }
-    AutoLogin = () => {
+    AutoRegister = () => {
+        if (this.state.username == '' && this.state.password == '' || this.state.check_password == '') {
+            message.error('请输入完整信息');
+            return;
+        }
+        if (this.state.check_password != this.state.password) {
+            message.error('输入的密码不一致');
+            return;
+        }
+
         let p = this.props.passport == null ? new Passport() : this.props.passport;
-        p.login(this.state.username, this.state.password, () => {
+        p.register(this.state.username, this.state.password, () => {
             // 登录成功时，跳转页面
-            this.props.history.push('/Challenge');
+            this.props.history.push('/Login');
         });
     }
     render() {
@@ -51,8 +61,13 @@ class Login extends React.Component {
                             }} /></span>
                         </div>
                         <div>
-                            <Button style={{ marginTop: 20 }} type="primary" onClick={this.AutoLogin}>登录</Button>
-                            <a href="/Register">没有账号?现在去注册</a>
+                            <span><Input.Password style={{ marginTop: 20 }} addonBefore="确认密码" placeholder="input password" onKeyUp={this.onKeyup} onInput={(event) => {
+                                this.setUserInfo(event, 'check_password');
+                            }} /></span>
+                        </div>
+                        <div>
+                            <Button style={{ marginTop: 20 }} type="primary" onClick={this.AutoRegister}>注册</Button>
+                            <a href="/Login">已有账号?现在去登陆</a>
                         </div>
 
                     </Col>
@@ -64,4 +79,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default Register;

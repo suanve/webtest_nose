@@ -17,6 +17,7 @@ import Challenge from "../container/Challenge";
 import Add from "../container/Add";
 import Edit from "../container/Edit";
 import Login from "../container/Login";
+import Register from "../container/Register";
 
 
 import Challenge_Mange from "../container/Manage/Challenge_Manage"
@@ -51,16 +52,16 @@ const Menubar = withRouter(({ history }) => {
             <Menu.Item key="/Challenge"><Link to="/Challenge">实验</Link></Menu.Item>
             {/* <Menu.Item key="/Topics"><Link to="/Topics">知识库</Link></Menu.Item> */}
             <Menu.Item key="/About"><Link to="/About">关于</Link></Menu.Item>
-
+            {console.log(passport)}
+            {passport.isLogin?<Menu.Item onClick={passport.quit} key="/Quit"><Link to="/Login">退出</Link></Menu.Item>:<Menu.Item key="/Login"><Link to="/Login">登录</Link></Menu.Item>}
             {passport.isAdmin ?
-
                 <SubMenu title="管理">
                     <Menu.Item key="/Challenge_Mange"><Link to="/Mange_Challenge">实验管理</Link></Menu.Item>
                     <Menu.Item key="/Container_Manage"><Link to="/Mange_Container">容器管理</Link></Menu.Item>
                     <Menu.Item key="/Users_Manage"><Link to="/Mange_Users">用户管理</Link></Menu.Item>
                 </SubMenu>
                 : ""}
-            {!passport.isLogin ? <Menu.Item key="/Login"><Link to="/Login">登录</Link></Menu.Item> : <Menu.Item onClick={passport.quit} key="/Quit"><Link to="/Login">退出</Link></Menu.Item>}
+            {/* {!passport.isLogin ? <Menu.Item key="/Login"><Link to="/Login">登录</Link></Menu.Item> : <Menu.Item onClick={passport.quit} key="/Quit"><Link to="/Login">退出</Link></Menu.Item>} */}
 
         </Menu>
     );
@@ -100,7 +101,6 @@ class Test extends React.Component {
 
 
                             <Route exact path="/" render={(props) => {
-
                                 if (passport.isLogin) {
                                     return <Challenge {...props} />
                                 } else {
@@ -120,6 +120,9 @@ class Test extends React.Component {
                             }} />
                             <Route path="/Login" render={(props) => {
                                 return <Login {...props} passport={passport} />
+                            }} />
+                            <Route path="/Register" render={(props) => {
+                                return <Register {...props} passport={passport} />
                             }} />
 
                             {/* 前台功能 */}

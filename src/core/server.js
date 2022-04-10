@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 
-var baseAPI = "http://192.168.104.233:8080"
+var baseAPI = "http://192.168.2.232:8081"
 
 let http = {
     post: "",
@@ -40,6 +40,11 @@ http.get = function (api, data) {
 
 
 export default http
+
+// 注册
+export function _register(data) {
+    return http.post("/api/register", data)
+}
 
 // 登录
 export function _login(data) {
