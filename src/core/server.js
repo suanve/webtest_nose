@@ -51,6 +51,11 @@ export function _login(data) {
     return http.post("/api/login", data)
 }
 
+// 修改密码
+export function _editPassword(data) {
+    return http.post("/api/user/update_pass", data)
+}
+
 
 // 获取实验数据
 export function _getChallenge() {
